@@ -325,49 +325,49 @@ router.get('/user/transactions/recent', userController.getRecentTransactions);
  *         description: Internal Server Error
  */
 router.get('/user/transactions/count/:walletAddress', userController.getTransactionCountByStatus);
-/**
- * @swagger
- * /api/users/update-balances/{walletAddress}:
- *   post:
- *     summary: Update wallet balances for ETH, USDC (ETH), MATIC, and USDC (Polygon)
- *     tags: [User]
- *     parameters:
- *       - in: path
- *         name: walletAddress
- *         schema:
- *           type: string
- *         required: true
- *         description: Wallet address to fetch balances for
- *     responses:
- *       200:
- *         description: Balances updated successfully
- *       404:
- *         description: User not found
- *       500:
- *         description: Server error
- */
-router.post('/users/update-balances/:walletAddress',userController.updateuserBalance);
-/**
- * @swagger
- * /api/users/balances/{walletAddress}:
- *   get:
- *     summary: Get wallet balances for a user
- *     tags: [User]
- *     parameters:
- *       - in: path
- *         name: walletAddress
- *         schema:
- *           type: string
- *         required: true
- *         description: Wallet address to get balances for
- *     responses:
- *       200:
- *         description: User balances retrieved successfully
- *       404:
- *         description: User not found
- *       500:
- *         description: Server error
- */
-router.get('/users/balances/:walletAddress',userController.getuserBalance);
+// /**
+//  * @swagger
+//  * /api/users/update-balances/{walletAddress}:
+//  *   post:
+//  *     summary: Update wallet balances for ETH, USDC (ETH), MATIC, and USDC (Polygon)
+//  *     tags: [User]
+//  *     parameters:
+//  *       - in: path
+//  *         name: walletAddress
+//  *         schema:
+//  *           type: string
+//  *         required: true
+//  *         description: Wallet address to fetch balances for
+//  *     responses:
+//  *       200:
+//  *         description: Balances updated successfully
+//  *       404:
+//  *         description: User not found
+//  *       500:
+//  *         description: Server error
+//  */
+// router.post('/users/update-balances/:walletAddress',userController.updateuserBalance);
+// /**
+//  * @swagger
+//  * /api/users/balances/{walletAddress}:
+//  *   get:
+//  *     summary: Get wallet balances for a user
+//  *     tags: [User]
+//  *     parameters:
+//  *       - in: path
+//  *         name: walletAddress
+//  *         schema:
+//  *           type: string
+//  *         required: true
+//  *         description: Wallet address to get balances for
+//  *     responses:
+//  *       200:
+//  *         description: User balances retrieved successfully
+//  *       404:
+//  *         description: User not found
+//  *       500:
+//  *         description: Server error
+//  */
+// router.get('/users/balances/:walletAddress',userController.getuserBalance);
 
 module.exports = router;
