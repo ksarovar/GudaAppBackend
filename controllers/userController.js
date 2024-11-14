@@ -4,7 +4,7 @@ const multer = require('multer');
 const path = require('path');
 const { body, param, query, validationResult } = require('express-validator');
 require('dotenv').config();
-const web3Helper = require('../utils/blockchain'); // Helper for fetching balances
+// const web3Helper = require('../utils/blockchain'); // Helper for fetching balances
 
 const web3 = new Web3();
 const crypto = require('crypto');
@@ -414,45 +414,45 @@ exports.getTransactionCountByStatus = [
 ];
 
 
-exports.updateuserBalance = [ async (req, res) => {
-    const { walletAddress } = req.params;
-    try {
-        // Find user by wallet address
-        const user = await User.findOne({ walletAddress });
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
+// exports.updateuserBalance = [ async (req, res) => {
+//     const { walletAddress } = req.params;
+//     try {
+//         // Find user by wallet address
+//         const user = await User.findOne({ walletAddress });
+//         if (!user) {
+//             return res.status(404).json({ error: 'User not found' });
+//         }
 
-        // Fetch all balances (ETH, USDC (ETH), MATIC, USDC (Polygon))
-        const balances = await web3Helper.getAllBalances(walletAddress);
+//         // Fetch all balances (ETH, USDC (ETH), MATIC, USDC (Polygon))
+//         const balances = await web3Helper.getAllBalances(walletAddress);
 
-        // Update user balances
-        user.balances = balances;
-        await user.save();
+//         // Update user balances
+//         user.balances = balances;
+//         await user.save();
 
-        res.status(200).json({
-            message: 'Balances updated successfully',
-            balances
-        });
-    } catch (error) {
-        console.error('Error updating balances:', error);
-        res.status(500).json({ error: 'Server error', details: error.message });
-    }
-}]
-exports.getuserBalance = [ async (req, res) => {
-    const { walletAddress } = req.params;
-    try {
-        // Find user by wallet address
-        const user = await User.findOne({ walletAddress });
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
+//         res.status(200).json({
+//             message: 'Balances updated successfully',
+//             balances
+//         });
+//     } catch (error) {
+//         console.error('Error updating balances:', error);
+//         res.status(500).json({ error: 'Server error', details: error.message });
+//     }
+// }]
+// exports.getuserBalance = [ async (req, res) => {
+//     const { walletAddress } = req.params;
+//     try {
+//         // Find user by wallet address
+//         const user = await User.findOne({ walletAddress });
+//         if (!user) {
+//             return res.status(404).json({ error: 'User not found' });
+//         }
 
-        res.status(200).json({
-            balances: user.balances
-        });
-    } catch (error) {
-        console.error('Error fetching balances:', error);
-        res.status(500).json({ error: 'Server error', details: error.message });
-    }
-}]
+//         res.status(200).json({
+//             balances: user.balances
+//         });
+//     } catch (error) {
+//         console.error('Error fetching balances:', error);
+//         res.status(500).json({ error: 'Server error', details: error.message });
+//     }
+// }]
